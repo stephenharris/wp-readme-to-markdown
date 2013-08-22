@@ -42,9 +42,11 @@ WordPress `readme.txt` should live in the root of your plug-in, so typical usage
 ```js
 grunt.initConfig({
   wp_readme_to_markdown: {
-    files: {
-      'readme.md': 'readme.txt'
-    },
+	your_target: {
+	    files: {
+	      'readme.md': 'readme.txt'
+	    },
+	},
   },
 })
 ```
