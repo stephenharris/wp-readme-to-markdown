@@ -56,6 +56,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.3.0
+Fixes bug with semicolon present in lists.
+
 ### 0.2.0
 Ensure contributors, donate link, etc have their own line.
 
