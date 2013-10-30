@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 
 		//parse contributors, donate link, etc.
 		grunt.log.debug("Parse contributors, donate link etc");
-		readme = readme.replace( new RegExp("^([^:\*]{1}[^:\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
+		readme = readme.replace( new RegExp("^([^:\n\*]{1}[^:\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
 
 		//guess plugin slug from plugin name
 		//@todo Get this from config instead?

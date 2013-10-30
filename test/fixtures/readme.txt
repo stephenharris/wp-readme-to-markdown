@@ -91,6 +91,8 @@ You may provide arbitrary sections, in the same format as the ones above.  This 
 plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
 "installation."  Arbitrary sections will be shown below the built-in sections outlined above.
 
+This is testing handling of semicolons: The first part will be wrapped in asterisks.
+
 == A brief Markdown Example ==
 
 Ordered list:

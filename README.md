@@ -56,6 +56,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.4.0
+Don't capture new lines when wrapping in asterisks.
+
 ### 0.3.0
 Fixes bug with semicolon present in lists.
 
