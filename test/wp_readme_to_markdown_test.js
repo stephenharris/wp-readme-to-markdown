@@ -36,4 +36,15 @@ exports.wp_readme_to_markdown = {
 
     test.done();
   },
+
+    without_screenshot_section: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-without-screenshots.md');
+    var expected = grunt.file.read('test/expected/readme-without-screenshots.md');
+    test.equal(actual, expected, 'should describe what the default behavior is.');
+
+    test.done();
+  },
+
 };

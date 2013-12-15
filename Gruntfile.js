@@ -31,12 +31,15 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     wp_readme_to_markdown: {
       default_options: {
-        options: {
-        },
         files: {
           'tmp/readme.md': 'test/fixtures/readme.txt',
         },
       },
+	without_screenshot_section: {
+         	files: {
+          		'tmp/readme-without-screenshots.md': 'test/fixtures/readme-without-screenshots.txt',
+        	}
+	},
     },
 
     // Unit tests.

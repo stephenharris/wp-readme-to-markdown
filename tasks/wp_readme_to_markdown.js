@@ -49,8 +49,9 @@ module.exports = function(grunt) {
 		var _match =  readme.match( new RegExp("^#([^#]+)#[\s ]*?\n","i") );	
 
 		//process screenshots, if any
+		grunt.log.debug("Get screenshots");
 		var screenshot_match = readme.match( new RegExp("## Screenshots ##([^#]*)","im") );
-		if ( _match && screenshot_match.length > 1 ) {
+		if ( _match && screenshot_match && screenshot_match.length > 1 ) {
 			
 			var plugin = _match[1].trim().toLowerCase().replace(' ', '-');
 	
