@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 		var screenshot_match = readme.match( new RegExp("## Screenshots ##([^#]*)","im") );
 		if ( _match && screenshot_match && screenshot_match.length > 1 ) {
 			
-			var plugin = _match[1].trim().toLowerCase().replace(' ', '-');
+			var plugin = _match[1].trim().toLowerCase().replace(/ /g, '-');
 	
 			//Collect screenshots content	
 			var screenshots = screenshot_match[1];
