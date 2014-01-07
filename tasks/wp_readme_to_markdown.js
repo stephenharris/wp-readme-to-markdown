@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
  grunt.registerMultiTask('wp_readme_to_markdown', 'Converts WP readme.txt file to markdown (readme.md)', function() {
- 
+
 	this.files.forEach(function(f) {
 
 		// Concat specified files.
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 				grunt.log.warn('Source file "' + filepath + '" not found.');
 				return false;
 			} else {
-				return true; 
+				return true;
 			}
 		}).map(function(filepath) {
 			// Read file source.
@@ -33,9 +33,9 @@ module.exports = function(grunt) {
 
 		/* The following is a ported version of {@see https://github.com/benbalter/WP-Readme-to-Github-Markdown}*/
 
-		//Convert Headings 
+		//Convert Headings
 		grunt.log.debug("Converting headings");
-		readme = readme.replace( new RegExp("^=([^=]+)=*?[\s ]*?\n","gim"),"###$1###\n");	
+		readme = readme.replace( new RegExp("^=([^=]+)=*?[\s ]*?\n","gim"),"###$1###\n");
 		readme = readme.replace( new RegExp("^==([^=]+)==*?[\s ]*?\n","mig"),"##$1##\n");
 		readme = readme.replace( new RegExp("^===([^=]+)===*?[\s ]*?\n","gim"),"#$1#\n");
 
@@ -43,19 +43,23 @@ module.exports = function(grunt) {
 		grunt.log.debug("Parse contributors, donate link etc");
 		readme = readme.replace( new RegExp("^([^:\n\*]{1}[^:\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
 
+		//convert code blocks
+		grunt.log.debug("Convert code blocks");
+    readme = readme.replace( new RegExp("`([^`]*[\n.]*)`", "i"), "```\n$1\n```");
+
 		//guess plugin slug from plugin name
 		//@todo Get this from config instead?
 		grunt.log.debug("Get plugin name");
-		var _match =  readme.match( new RegExp("^#([^#]+)#[\s ]*?\n","i") );	
+		var _match =  readme.match( new RegExp("^#([^#]+)#[\s ]*?\n","i") );
 
 		//process screenshots, if any
 		grunt.log.debug("Get screenshots");
 		var screenshot_match = readme.match( new RegExp("## Screenshots ##([^#]*)","im") );
 		if ( _match && screenshot_match && screenshot_match.length > 1 ) {
-			
+
 			var plugin = _match[1].trim().toLowerCase().replace(' ', '-');
-	
-			//Collect screenshots content	
+
+			//Collect screenshots content
 			var screenshots = screenshot_match[1];
 
 			//parse screenshot list into array
@@ -66,7 +70,7 @@ module.exports = function(grunt) {
 				nonGlobalMatch = globalMatch[i].match(  new RegExp( "^[0-9]+\. (.*)", 'im' ) );
 				matchArray.push( nonGlobalMatch[1] );
 			}
-		
+
 			//replace list item with markdown image syntax, hotlinking to plugin repo
 			//@todo assumes .png, perhaps should check that file exists first?
 			for( i=1; i <= matchArray.length; i++ ) {
@@ -75,7 +79,7 @@ module.exports = function(grunt) {
 		}
 		// Write the destination file.
 		grunt.file.write( f.dest, readme );
-	
+
 		// Print a success message.
 		grunt.log.writeln('File "' + f.dest + '" created.');
 	});
