@@ -45,7 +45,7 @@ module.exports = function(grunt) {
 
 		//convert code blocks
 		grunt.log.debug("Convert code blocks");
-    readme = readme.replace( new RegExp("`([^`]*[\n.]*)`", "i"), "```$1```");
+    readme = readme.replace( new RegExp("`([^`]*[\n.]*)`", "i"), "```\n$1\n```");
 
 		//guess plugin slug from plugin name
 		//@todo Get this from config instead?
