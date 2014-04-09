@@ -35,18 +35,18 @@ module.exports = function(grunt) {
 
 		//Convert Headings 
 		grunt.log.debug("Converting headings");
-		readme = readme.replace( new RegExp("^=([^=]+)=*?[\s ]*?\n","gim"),"###$1###\n");	
-		readme = readme.replace( new RegExp("^==([^=]+)==*?[\s ]*?\n","mig"),"##$1##\n");
-		readme = readme.replace( new RegExp("^===([^=]+)===*?[\s ]*?\n","gim"),"#$1#\n");
+		readme = readme.replace( new RegExp("^=([^=]+)=*?[\s ]*?$","gim"),"###$1###");	
+		readme = readme.replace( new RegExp("^==([^=]+)==*?[\s ]*?$","mig"),"##$1##");
+		readme = readme.replace( new RegExp("^===([^=]+)===*?[\s ]*?$","gim"),"#$1#");
 
 		//parse contributors, donate link, etc.
 		grunt.log.debug("Parse contributors, donate link etc");
-		readme = readme.replace( new RegExp("^([^:\n\*]{1}[^:\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
+		readme = readme.replace( new RegExp("^([^:\r\n\*]{1}[^:\r\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
 
 		//guess plugin slug from plugin name
 		//@todo Get this from config instead?
 		grunt.log.debug("Get plugin name");
-		var _match =  readme.match( new RegExp("^#([^#]+)#[\s ]*?\n","i") );	
+		var _match =  readme.match( new RegExp("^#([^#]+)#[\s ]*?$","im") );	
 
 		//process screenshots, if any
 		grunt.log.debug("Get screenshots");
