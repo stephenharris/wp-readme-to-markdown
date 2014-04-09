@@ -36,10 +36,21 @@ module.exports = function(grunt) {
         },
       },
 	without_screenshot_section: {
-         	files: {
-          		'tmp/readme-without-screenshots.md': 'test/fixtures/readme-without-screenshots.txt',
-        	}
+		files: {
+			'tmp/readme-without-screenshots.md': 'test/fixtures/readme-without-screenshots.txt',
+		}
 	},
+	with_spaces_after_headers: {
+		files: {
+			'tmp/readme-with-spaces-after-headers.md': 'test/fixtures/readme-with-spaces-after-headers.txt',
+		}
+	},
+	with_spaces_between_plugin_details: {
+		files: {
+			'tmp/readme-with-spaces-between-plugin-details.md': 'test/fixtures/readme-with-spaces-between-plugin-details.txt',
+		}
+	},
+
     },
 
     // Unit tests.

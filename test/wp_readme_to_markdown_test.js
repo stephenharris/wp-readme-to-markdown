@@ -47,4 +47,24 @@ exports.wp_readme_to_markdown = {
     test.done();
   },
 
+   with_spaces_after_headers: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-with-spaces-after-headers.md');
+    var expected = grunt.file.read('test/expected/readme-with-spaces-after-headers.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
+
+   with_spaces_between_plugin_details: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-with-spaces-between-plugin-details.md');
+    var expected = grunt.file.read('test/expected/readme-with-spaces-between-plugin-details.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
+
 };
