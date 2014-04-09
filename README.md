@@ -56,6 +56,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.7.0
+Handle new lines in a "OS-agnostic" way. Fixes [#4](https://github.com/stephenharris/wp-readme-to-markdown/issues/4).
+Added unit tests
+Linted code
+
 ### 0.6.0
 Fix bug where plug-in name has multiple spaces: replace all spaces with hypens.
 
