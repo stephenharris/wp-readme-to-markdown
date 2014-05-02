@@ -14,7 +14,12 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
  grunt.registerMultiTask('wp_readme_to_markdown', 'Converts WP readme.txt file to markdown (readme.md)', function() {
- 
+
+	var options = this.options({
+		screenshot_url: 'http://s.wordpress.org/extend/plugins/{plugin}/{screenshot}.png',
+	});
+	
+	grunt.verbose.writeflags( options );
 	this.files.forEach(function(f) {
 
 		// Concat specified files.
@@ -70,7 +75,10 @@ module.exports = function(grunt) {
 			//replace list item with markdown image syntax, hotlinking to plugin repo
 			//@todo assumes .png, perhaps should check that file exists first?
 			for( i=1; i <= matchArray.length; i++ ) {
-				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###\n!["+matchArray[i-1]+"](http://s.wordpress.org/extend/plugins/"+plugin+"/screenshot-"+i+".png)\n" );
+				var url = options.screenshot_url;
+				url = url.replace( '{plugin}', plugin );
+				url = url.replace( '{screenshot}', 'screenshot-'+i );
+				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###\n!["+matchArray[i-1]+"](" + url + ")\n" );
 			}
 		}
 		// Write the destination file.
