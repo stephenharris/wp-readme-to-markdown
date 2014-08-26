@@ -81,6 +81,10 @@ module.exports = function(grunt) {
 				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###\n!["+matchArray[i-1]+"](" + url + ")\n" );
 			}
 		}
+		
+		//Code blocks
+		readme = readme.replace( new RegExp("^`$([^`]*)^`$","m"),"<pre><code>$1</code></pre>");
+		
 		// Write the destination file.
 		grunt.file.write( f.dest, readme );
 	

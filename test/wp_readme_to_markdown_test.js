@@ -66,5 +66,15 @@ exports.wp_readme_to_markdown = {
 
     test.done();
   },
+  
+  with_code_blocks: function( test ){
+	    test.expect(1);
+
+	    var actual = grunt.file.read('tmp/readme-with-code-blocks.md');
+	    var expected = grunt.file.read('test/expected/readme-with-code-blocks.md');
+	    test.equal(actual, expected );
+
+	    test.done();
+  },
 
 };
