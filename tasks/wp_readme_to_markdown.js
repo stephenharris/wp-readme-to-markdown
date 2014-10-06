@@ -46,7 +46,12 @@ module.exports = function(grunt) {
 
 		//parse contributors, donate link, etc.
 		grunt.log.debug("Parse contributors, donate link etc");
-		readme = readme.replace( new RegExp("^([^:\r\n*]{1}[^:\r\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
+		var header_match = readme.match( new RegExp("([^#]*)## Description ##", "m") );
+		if ( header_match && header_match.length >= 1 ) {
+			var header_search = header_match[1];
+			var header_replace = header_search.replace( new RegExp("^([^:\r\n*]{1}[^:\r\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
+			readme = readme.replace( header_search, header_replace );
+		}
 
 		//guess plugin slug from plugin name
 		//@todo Get this from config instead?
@@ -83,7 +88,7 @@ module.exports = function(grunt) {
 		}
 		
 		//Code blocks
-		readme = readme.replace( new RegExp("^`$([^`]*)^`$","m"),"<pre><code>$1</code></pre>");
+		readme = readme.replace( new RegExp("^`\\s*$", "gm"), "```");
 		
 		// Write the destination file.
 		grunt.file.write( f.dest, readme );
