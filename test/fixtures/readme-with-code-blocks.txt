@@ -23,6 +23,12 @@ function test(){
 }
 `
 
+Here is another code block
+`
+function returnRandomNumber(){
+	return 3;//random number, determined by dice roll.
+}
+`
 A few notes about the sections above:
 
 *   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames

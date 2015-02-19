@@ -83,7 +83,11 @@ module.exports = function(grunt) {
 		}
 		
 		//Code blocks
-		readme = readme.replace( new RegExp("^`$([^`]*)^`$","m"),"<pre><code>$1</code></pre>");
+		readme = readme.replace( new RegExp("^`$[\n\r]+([^`]*)[\n\r]+^`$","gm"),function( codeblock, codeblockContents ){
+			var lines = codeblockContents.split("\n");
+			//Add newline and indent all lines in the codeblock by one tab.
+			return "\n\t" + lines.join("\n\t") + "\n"; //trailing newline is unnecessary but adds some symmetry.
+		});
 		
 		// Write the destination file.
 		grunt.file.write( f.dest, readme );
