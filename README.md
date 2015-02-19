@@ -62,6 +62,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.9.0
+Add support for code blocks in WordPress readme (with caveat, see [#7](https://github.com/stephenharris/wp-readme-to-markdown/issues/7). )
+
 ### 0.8.0
 Add `screenshot_url` option
 
