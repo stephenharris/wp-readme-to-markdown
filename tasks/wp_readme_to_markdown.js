@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 
 		//parse contributors, donate link, etc.
 		grunt.log.debug("Parse contributors, donate link etc");
-		var header_match = readme.match( new RegExp("([^#]*)## Description ##", "m") );
+		var header_match = readme.match( new RegExp("([^##]*)(?:\n##|$)", "m") );
 		if ( header_match && header_match.length >= 1 ) {
 			var header_search = header_match[1];
 			var header_replace = header_search.replace( new RegExp("^([^:\r\n*]{1}[^:\r\n#\\]\\[]+): (.+)","gim"),"**$1:** $2  ");
