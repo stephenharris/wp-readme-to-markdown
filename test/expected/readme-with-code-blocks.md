@@ -72,13 +72,13 @@ Answer to foo bar dilemma.
 ## Screenshots ##
 
 ### 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from ###
-![This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from](http://s.wordpress.org/extend/plugins/plugin-name/screenshot-1.png)
+![This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from](http://ps.w.org/plugin-name/assets/screenshot-1.png)
 
 the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
 directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
 (or jpg, jpeg, gif).
 ### 2. This is the second screen shot ###
-![This is the second screen shot](http://s.wordpress.org/extend/plugins/plugin-name/screenshot-2.png)
+![This is the second screen shot](http://ps.w.org/plugin-name/assets/screenshot-2.png)
 
 
 ## Changelog ##
