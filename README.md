@@ -36,7 +36,7 @@ grunt.initConfig({
 
 #### screenshot_url
 Type: `String`
-Default value: `http://s.wordpress.org/extend/plugins/{plugin}/{screenshot}.png`
+Default value: `http://ps.w.org/{plugin}/assets/{screenshot}.png`
 
 The url used for the screenshot images. `{plugin}` is replaced by the plug-in name (as determined by the readme) and `{screenshot}` is replaced by `screenshot-X` where `X` is a number indexing the screenshots (starting from 1). 
 
@@ -61,6 +61,10 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+### 1.0.0
+- Changed the default value of the screen short URL
+- Fix for the fact lines with colons are being parsed as if they were readme tags. Fixes [#3](https://github.com/stephenharris/wp-readme-to-markdown/issues/3). ). Thanks to @marcochiesi.
 
 ### 0.9.0
 Add support for code blocks in WordPress readme (with caveat, see [#7](https://github.com/stephenharris/wp-readme-to-markdown/issues/7). )
