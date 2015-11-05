@@ -16,7 +16,7 @@ module.exports = function(grunt) {
  grunt.registerMultiTask('wp_readme_to_markdown', 'Converts WP readme.txt file to markdown (readme.md)', function() {
 
 	var options = this.options({
-		screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png',
+		screenshot_url: 'https://s.w.org/plugins/{plugin}/{screenshot}.png',
 	});
 	
 	grunt.verbose.writeflags( options );
