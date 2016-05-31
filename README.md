@@ -50,6 +50,18 @@ There are placeholders to available for use in the URL structure. `{plugin}` is 
 
 **\*** Actual URL of the wordpress.org hosted screenshots can vary. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for details.
 
+#### pre_convert
+Type: `function`    
+Default value: `noop`
+
+A function which filters the value of the original readme file before it is converted. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the original readme file content is used.
+
+#### pre_convert
+Type: `function`    
+Default value: `noop`
+
+A function which filters the value of the converted readme content immediately before it is written to file. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the converted readme content is written to file unchanged.
+
 ### Usage Examples
 
 #### Default Options

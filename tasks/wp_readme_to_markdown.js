@@ -16,7 +16,9 @@ module.exports = function(grunt) {
  grunt.registerMultiTask('wp_readme_to_markdown', 'Converts WP readme.txt file to markdown (readme.md)', function() {
 
 	var options = this.options({
-		screenshot_url: false
+		screenshot_url: false,
+		pre_convert: function( readme ){},
+		post_convert: function( readme ){}
 	});
 
 	grunt.verbose.writeflags( options );
@@ -35,6 +37,8 @@ module.exports = function(grunt) {
 			// Read file source.
 			return grunt.file.read(filepath);
 		}).join(grunt.util.normalizelf(' '));
+
+		readme = options.pre_convert(readme) || readme;
 
 		/* The following is a ported version of {@see https://github.com/benbalter/WP-Readme-to-Github-Markdown}*/
 
@@ -115,6 +119,8 @@ module.exports = function(grunt) {
 			//Add newline and indent all lines in the codeblock by one tab.
 			return "\n\t" + lines.join("\n\t") + "\n"; //trailing newline is unnecessary but adds some symmetry.
 		});
+
+		readme = options.post_convert(readme) || readme;
 
 		// Write the destination file.
 		grunt.file.write( f.dest, readme );
