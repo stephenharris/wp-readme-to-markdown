@@ -16,7 +16,7 @@ module.exports = function(grunt) {
  grunt.registerMultiTask('wp_readme_to_markdown', 'Converts WP readme.txt file to markdown (readme.md)', function() {
 
 	var options = this.options({
-		screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png',
+		screenshot_url: false
 	});
 
 	grunt.verbose.writeflags( options );
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 		//process screenshots, if any
 		grunt.log.debug("Get screenshots");
 		var screenshot_match = readme.match( new RegExp("## Screenshots ##([^#]*)","im") );
-		if ( _match && screenshot_match && screenshot_match.length > 1 ) {
+		if ( options.screenshot_url && _match && screenshot_match && screenshot_match.length > 1 ) {
 
 			var plugin = _match[1].trim().toLowerCase().replace(/ /g, '-');
 

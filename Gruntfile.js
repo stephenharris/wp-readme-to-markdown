@@ -34,29 +34,48 @@ module.exports = function(grunt) {
         files: {
           'tmp/readme.md': 'test/fixtures/readme.txt',
         },
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
       without_screenshot_section: {
 		files: {
 			'tmp/readme-without-screenshots.md': 'test/fixtures/readme-without-screenshots.txt',
-		}
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
       with_spaces_after_headers: {
 		files: {
 			'tmp/readme-with-spaces-after-headers.md': 'test/fixtures/readme-with-spaces-after-headers.txt',
-		}
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
       with_spaces_between_plugin_details: {
 		files: {
 			'tmp/readme-with-spaces-between-plugin-details.md': 'test/fixtures/readme-with-spaces-between-plugin-details.txt',
-		}
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
 	
       with_code_blocks: {
 		files: {
 			'tmp/readme-with-code-blocks.md': 'test/fixtures/readme-with-code-blocks.txt',
-		}
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
-
+      with_screenshots_disabled: {
+		files: {
+			'tmp/readme-screenshots-disabled.md': 'test/fixtures/readme.txt',
+		},
+      },
     },
 
     // Unit tests.
