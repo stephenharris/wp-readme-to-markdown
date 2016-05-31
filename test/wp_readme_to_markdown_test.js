@@ -68,13 +68,42 @@ exports.wp_readme_to_markdown = {
   },
   
   with_code_blocks: function( test ){
-	    test.expect(1);
+    test.expect(1);
 
-	    var actual = grunt.file.read('tmp/readme-with-code-blocks.md');
-	    var expected = grunt.file.read('test/expected/readme-with-code-blocks.md');
-	    test.equal(actual, expected );
+    var actual = grunt.file.read('tmp/readme-with-code-blocks.md');
+    var expected = grunt.file.read('test/expected/readme-with-code-blocks.md');
+    test.equal(actual, expected );
 
-	    test.done();
+    test.done();
+  },
+  
+  with_screenshots_disabled: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-screenshots-disabled.md');
+    var expected = grunt.file.read('test/expected/readme-screenshots-disabled.md');
+    test.equal(actual, expected );
+
+    test.done();
   },
 
+  with_appended_header_pre_convert: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-pre-convert-filter.md');
+    var expected = grunt.file.read('test/expected/readme-pre-convert-filter.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
+  
+  with_appended_header_post_convert: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-post-convert-filter.md');
+    var expected = grunt.file.read('test/expected/readme-post-convert-filter.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
 };

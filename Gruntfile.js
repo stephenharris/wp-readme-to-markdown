@@ -34,29 +34,71 @@ module.exports = function(grunt) {
         files: {
           'tmp/readme.md': 'test/fixtures/readme.txt',
         },
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
       without_screenshot_section: {
 		files: {
-			'tmp/readme-without-screenshots.md': 'test/fixtures/readme-without-screenshots.txt',
-		}
+          'tmp/readme-without-screenshots.md': 'test/fixtures/readme-without-screenshots.txt',
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
       with_spaces_after_headers: {
 		files: {
-			'tmp/readme-with-spaces-after-headers.md': 'test/fixtures/readme-with-spaces-after-headers.txt',
-		}
+          'tmp/readme-with-spaces-after-headers.md': 'test/fixtures/readme-with-spaces-after-headers.txt',
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
       with_spaces_between_plugin_details: {
 		files: {
-			'tmp/readme-with-spaces-between-plugin-details.md': 'test/fixtures/readme-with-spaces-between-plugin-details.txt',
-		}
+          'tmp/readme-with-spaces-between-plugin-details.md': 'test/fixtures/readme-with-spaces-between-plugin-details.txt',
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
       },
-	
       with_code_blocks: {
 		files: {
-			'tmp/readme-with-code-blocks.md': 'test/fixtures/readme-with-code-blocks.txt',
+          'tmp/readme-with-code-blocks.md': 'test/fixtures/readme-with-code-blocks.txt',
+		},
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
+      },
+      with_screenshots_disabled: {
+		files: {
+          'tmp/readme-screenshots-disabled.md': 'test/fixtures/readme.txt',
+		},
+      },
+      with_appended_header_pre_convert: {
+		files: {
+          'tmp/readme-pre-convert-filter.md': 'test/fixtures/readme.txt',
+		},
+		options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png',
+          pre_convert: function( readme ) {
+              readme += "\n== My Additional Header ==\n\n My additional text";
+              return readme;
+          }
 		}
       },
-
+      with_appended_header_post_convert: {
+		files: {
+          'tmp/readme-post-convert-filter.md': 'test/fixtures/readme.txt',
+		},
+		options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png',
+          post_convert: function( readme ) {
+              readme += "\n== My Additional Header ==\n\nHeader is not converted as it is added after conversion.";
+              return readme;
+          }
+		}
+      },
     },
 
     // Unit tests.

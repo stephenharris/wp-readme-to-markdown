@@ -1,5 +1,5 @@
 # Plugin Name #
-**Contributors:** (this should be a list of wordpress.org userid's)  
+**Contributors:** [stephenharris](https://profiles.wordpress.org/stephenharris)  
 
 **Donate link:** http://example.com/  
 

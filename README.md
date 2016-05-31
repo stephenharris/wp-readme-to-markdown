@@ -35,10 +35,32 @@ grunt.initConfig({
 ### Options
 
 #### screenshot_url
-Type: `String`
-Default value: `http://ps.w.org/{plugin}/assets/{screenshot}.png`
+Type: `String`/`Bool`    
+Default value: `false`
 
-The url used for the screenshot images. `{plugin}` is replaced by the plug-in name (as determined by the readme) and `{screenshot}` is replaced by `screenshot-X` where `X` is a number indexing the screenshots (starting from 1). 
+*Prior to 2.0.0 the default value had been `http://ps.w.org/{plugin}/assets/{screenshot}.png`. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for the reasons for the change.* 
+
+The url/path used for the screenshot images. If left as `false`, no screenshot images will be included. Alternatively you can provide a:
+
+ 1. A relative path to the images (commited to the repo) `assets/{screenshot}.png`
+ 2. A URL to a website hosting the images: `http://example.com/{screenshot}.png`
+ 3. The wordpress.org hosted screenshots**\***: `http://ps.w.org/{plugin}/assets/{screenshot}.png`
+
+There are placeholders to available for use in the URL structure. `{plugin}` is replaced by the plug-in name (as determined by the readme) and `{screenshot}` is replaced by `screenshot-X` where `X` is a number indexing the screenshots (starting from 1). 
+
+**\*** Actual URL of the wordpress.org hosted screenshots can vary. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for details.
+
+#### pre_convert
+Type: `function`    
+Default value: `noop`
+
+A function which filters the value of the original readme file before it is converted. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the original readme file content is used.
+
+#### pre_convert
+Type: `function`    
+Default value: `noop`
+
+A function which filters the value of the converted readme content immediately before it is written to file. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the converted readme content is written to file unchanged.
 
 ### Usage Examples
 
@@ -61,6 +83,11 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+### 2.0.0 - 31st May 2016
+- **Breaking change:** The default value of `screenshot_url` has been changed from `http://ps.w.org/{plugin}/assets/{screenshot}.png` to `false`. By default no screenshot images are included in the generated `readme.md`. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for details.
+- Contributors have their links to their wordpress.org profile automatically inserted. [#12](https://github.com/stephenharris/wp-readme-to-markdown/issues/12)
+- Added `pre_convert` and `post_convert` options
 
 ### 1.0.0
 - Changed the default value of the screen short URL
