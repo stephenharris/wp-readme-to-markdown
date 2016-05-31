@@ -76,5 +76,14 @@ exports.wp_readme_to_markdown = {
 
     test.done();
   },
+  
+  with_screenshots_disabled: function( test ){
+    test.expect(1);
 
+    var actual = grunt.file.read('tmp/readme-screenshots-disabled.md');
+    var expected = grunt.file.read('test/expected/readme-screenshots-disabled.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
 };
