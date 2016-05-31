@@ -84,6 +84,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 2.0.0 - 31st May 2016
+- **Breaking change:** The default value of `screenshot_url` has been changed from `http://ps.w.org/{plugin}/assets/{screenshot}.png` to `false`. By default no screenshot images are included in the generated `readme.md`. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for details.
+- Contributors have their links to their wordpress.org profile automatically inserted. [#12](https://github.com/stephenharris/wp-readme-to-markdown/issues/12)
+- Added `pre_convert` and `post_convert` options
+
 ### 1.0.0
 - Changed the default value of the screen short URL
 - Fix for the fact lines with colons are being parsed as if they were readme tags. Fixes [#3](https://github.com/stephenharris/wp-readme-to-markdown/issues/3). ). Thanks to @marcochiesi.
