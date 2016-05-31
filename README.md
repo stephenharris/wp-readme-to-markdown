@@ -56,7 +56,7 @@ Default value: `noop`
 
 A function which filters the value of the original readme file before it is converted. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the original readme file content is used.
 
-#### pre_convert
+#### post_convert
 Type: `function`    
 Default value: `noop`
 
