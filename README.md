@@ -3,7 +3,7 @@
 > Converts WordPress readme.txt file to markdown (readme.md)
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
+This plugin requires Grunt `>=0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -83,6 +83,9 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+### 2.0.1 - 18th July 2016
+- Updated peerDependencies - see http://gruntjs.com/blog/2016-02-11-grunt-1.0.0-rc1-released
 
 ### 2.0.0 - 31st May 2016
 - **Breaking change:** The default value of `screenshot_url` has been changed from `http://ps.w.org/{plugin}/assets/{screenshot}.png` to `false`. By default no screenshot images are included in the generated `readme.md`. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for details.
