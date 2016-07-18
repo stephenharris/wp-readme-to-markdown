@@ -1,7 +1,7 @@
 {
   "name": "grunt-wp-readme-to-markdown",
   "description": "Converts WP readme.txt file to markdown (readme.md)",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/stephenharris/wp-readme-to-markdown",
   "author": {
     "name": "Stephen Harris",
