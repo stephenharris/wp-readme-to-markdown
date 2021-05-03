@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 		// Include w.org profiles for contributors.
 		grunt.log.debug("Including contributors profiles");
 		var contributors_match = readme.match( new RegExp("(\\*\\*Contributors:\\*\\* )(.+)", "m") );
-		if ( header_match && header_match.length >= 1 ) {
+		if ( contributors_match && contributors_match.length >= 1 ) {
 			var contributors_search = contributors_match[0];
 			var contributors_replace = contributors_match[1];
 			var profiles = [];
