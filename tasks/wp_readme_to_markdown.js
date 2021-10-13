@@ -67,8 +67,8 @@ module.exports = function(grunt) {
 
 			// Fill profiles.
 			contributors_match[2].split(",").forEach(function(value) {
-				value = value.trim();
-				profiles.push("[" + value + "](https://profiles.wordpress.org/" + value.toLowerCase().replaceAll(" ", "-") + "/)");
+				value = value.trim().toLowerCase().replace(/ /g, '-'); 
+				profiles.push("[" + value + "](https://profiles.wordpress.org/" + value +"/)");
 			});
 
 			contributors_replace += profiles.join(", ");
