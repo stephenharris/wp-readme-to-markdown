@@ -84,6 +84,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 2.1.0 - 13th October 2021
+- Normalize profile usernames. Thanks to szepeviktor.
+
 ### 2.0.1 - 18th July 2016
 - Updated peerDependencies - see http://gruntjs.com/blog/2016-02-11-grunt-1.0.0-rc1-released
 
