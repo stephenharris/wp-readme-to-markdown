@@ -1,5 +1,5 @@
 # Plugin Name #
-**Contributors:** [stephenharris](https://profiles.wordpress.org/stephenharris)  
+**Contributors:** [stephenharris](https://profiles.wordpress.org/stephenharris/)  
 **Donate link:** http://example.com/       
 **Tags:** comments, spam        
 **Requires at least:** 3.0.1       
