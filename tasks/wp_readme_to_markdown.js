@@ -11,7 +11,7 @@
 module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  // Creation: http://gruntjs.com/creating-tasks
 
  grunt.registerMultiTask('wp_readme_to_markdown', 'Converts WP readme.txt file to markdown (readme.md)', function() {
 
@@ -40,15 +40,18 @@ module.exports = function(grunt) {
 
 		readme = options.pre_convert(readme) || readme;
 
-		/* The following is a ported version of {@see https://github.com/benbalter/WP-Readme-to-Github-Markdown}*/
+		/*
+		 * The following is a ported version of
+		 * {@see https://github.com/benbalter/WP-Readme-to-Github-Markdown}
+		 */
 
-		//Convert Headings
+		// Convert Headings.
 		grunt.log.debug("Converting headings");
 		readme = readme.replace( new RegExp("^=([^=]+)=*?[\\s ]*?$","gim"),"###$1###");
 		readme = readme.replace( new RegExp("^==([^=]+)==*?[\\s ]*?$","mig"),"##$1##");
 		readme = readme.replace( new RegExp("^===([^=]+)===*?[\\s ]*?$","gim"),"#$1#");
 
-		//parse contributors, donate link, etc.
+		// Parse contributors, donate link, etc.
 		grunt.log.debug("Parse contributors, donate link etc");
 		var header_match = readme.match( new RegExp("([^##]*)(?:\n##|$)", "m") );
 		if ( header_match && header_match.length >= 1 ) {
@@ -57,7 +60,7 @@ module.exports = function(grunt) {
 			readme = readme.replace( header_search, header_replace );
 		}
 
-		// Include w.org profiles for contributors.
+		// Include WP.org profiles for contributors.
 		grunt.log.debug("Including contributors profiles");
 		var contributors_match = readme.match( new RegExp("(\\*\\*Contributors:\\*\\* )(.+)", "m") );
 		if ( header_match && header_match.length >= 1 ) {
@@ -79,22 +82,22 @@ module.exports = function(grunt) {
 			readme = readme.replace( contributors_search, contributors_replace );
 		}
 
-		//guess plugin slug from plugin name
-		//@todo Get this from config instead?
+		// Guess plugin slug from plugin name.
+		// @todo Get this from config instead?
 		grunt.log.debug("Get plugin name");
 		var _match =  readme.match( new RegExp("^#([^#]+)#[\\s ]*?$","im") );
 
-		//process screenshots, if any
+		// Process screenshots, if any.
 		grunt.log.debug("Get screenshots");
 		var screenshot_match = readme.match( new RegExp("## Screenshots ##([^#]*)","im") );
 		if ( options.screenshot_url && _match && screenshot_match && screenshot_match.length > 1 ) {
 
 			var plugin = _match[1].trim().toLowerCase().replace(/ /g, '-');
 
-			//Collect screenshots content
+			// Collect screenshots content.
 			var screenshots = screenshot_match[1];
 
-			//parse screenshot list into array
+			// Parse screenshot list into array.
 			var globalMatch = screenshots.match( new RegExp( "^[0-9]+\\. (.*)", "gim") );
 
 			var matchArray = [], nonGlobalMatch;
@@ -103,8 +106,8 @@ module.exports = function(grunt) {
 				matchArray.push( nonGlobalMatch[1] );
 			}
 
-			//replace list item with markdown image syntax, hotlinking to plugin repo
-			//@todo assumes .png, perhaps should check that file exists first?
+			// Replace list item with Markdown image syntax, hotlinking to plugin repo.
+			// @todo Assumes .png, perhaps should check that file exists first?
 			for( i=1; i <= matchArray.length; i++ ) {
 				var url = options.screenshot_url;
 				url = url.replace( '{plugin}', plugin );
@@ -113,10 +116,10 @@ module.exports = function(grunt) {
 			}
 		}
 
-		//Code blocks
+		// Code blocks.
 		readme = readme.replace( new RegExp("^`$[\n\r]+([^`]*)[\n\r]+^`$","gm"),function( codeblock, codeblockContents ){
 			var lines = codeblockContents.split("\n");
-			//Add newline and indent all lines in the codeblock by one tab.
+			// Add newline and indent all lines in the codeblock by one tab.
 			return "\n\t" + lines.join("\n\t") + "\n"; //trailing newline is unnecessary but adds some symmetry.
 		});
 
