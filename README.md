@@ -35,10 +35,10 @@ grunt.initConfig({
 ### Options
 
 #### screenshot_url
-Type: `String`/`Bool`    
+Type: `String`/`Bool`
 Default value: `false`
 
-*Prior to 2.0.0 the default value had been `http://ps.w.org/{plugin}/assets/{screenshot}.png`. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for the reasons for the change.* 
+*Prior to 2.0.0 the default value had been `http://ps.w.org/{plugin}/assets/{screenshot}.png`. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for the reasons for the change.*
 
 The url/path used for the screenshot images. If left as `false`, no screenshot images will be included. Alternatively you can provide a:
 
@@ -46,18 +46,18 @@ The url/path used for the screenshot images. If left as `false`, no screenshot i
  2. A URL to a website hosting the images: `http://example.com/{screenshot}.png`
  3. The wordpress.org hosted screenshots**\***: `http://ps.w.org/{plugin}/assets/{screenshot}.png`
 
-There are placeholders to available for use in the URL structure. `{plugin}` is replaced by the plug-in name (as determined by the readme) and `{screenshot}` is replaced by `screenshot-X` where `X` is a number indexing the screenshots (starting from 1). 
+There are placeholders to available for use in the URL structure. `{plugin}` is replaced by the plug-in name (as determined by the readme) and `{screenshot}` is replaced by `screenshot-X` where `X` is a number indexing the screenshots (starting from 1).
 
 **\*** Actual URL of the wordpress.org hosted screenshots can vary. Please see [#14](https://github.com/stephenharris/wp-readme-to-markdown/issues/14) for details.
 
 #### pre_convert
-Type: `function`    
+Type: `function`
 Default value: `noop`
 
 A function which filters the value of the original readme file before it is converted. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the original readme file content is used.
 
 #### post_convert
-Type: `function`    
+Type: `function`
 Default value: `noop`
 
 A function which filters the value of the converted readme content immediately before it is written to file. You should return the (modified) content. Returning a `false` value has the same effect as not providing a callback at all: the converted readme content is written to file unchanged.
@@ -78,6 +78,44 @@ grunt.initConfig({
   },
 })
 ```
+## Using with Github Actions
+If you host your primary plugin development on Github, you can use Actions to automatically generate the markdown version of the readme during the commit.  An action like the following can be used:
+
+```
+name: Generate readme.md from readme.txt
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths: [ "readme.txt" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        npm install
+        grunt
+        git config --global user.name '${{secrets.GIT_USERNAME}}'
+        git config --global user.email '${{secrets.GIT_EMAIL}}'
+        git commit -am "Regenerate readme.md"
+        git push
+```
+
+Make sure to set your GIT_USERNAME/GIT_EMAIL secrets so that the commit of the markdown file will work.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
