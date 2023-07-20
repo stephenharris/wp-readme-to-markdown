@@ -99,6 +99,14 @@ module.exports = function(grunt) {
           }
 		}
       },
+      with_crlf_endings: {
+        files: {
+          'tmp/readme-crlf.md': 'test/fixtures/readme-crlf.txt',
+        },
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
+      },
     },
 
     // Unit tests.

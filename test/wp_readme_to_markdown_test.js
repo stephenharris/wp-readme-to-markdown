@@ -106,4 +106,14 @@ exports.wp_readme_to_markdown = {
 
     test.done();
   },
+  
+  with_crlf_endings: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-crlf.md');
+    var expected = grunt.file.read('test/expected/readme-crlf.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
 };
