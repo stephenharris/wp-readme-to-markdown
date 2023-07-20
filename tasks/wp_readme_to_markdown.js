@@ -40,6 +40,15 @@ module.exports = function(grunt) {
 
 		readme = options.pre_convert(readme) || readme;
 
+		// Get End Of Line of the readme source.
+		var eol = ( function( source ) {
+			var eolIndex = source.indexOf( '\n' );
+			if ( source[ eolIndex - 1 ] === '\r' ) {
+				return '\r\n';
+			}
+			return '\n';
+		}) ( readme );
+
 		/*
 		 * The following is a ported version of
 		 * {@see https://github.com/benbalter/WP-Readme-to-Github-Markdown}
@@ -112,7 +121,11 @@ module.exports = function(grunt) {
 				var url = options.screenshot_url;
 				url = url.replace( '{plugin}', plugin );
 				url = url.replace( '{screenshot}', 'screenshot-'+i );
-				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###\n!["+matchArray[i-1]+"](" + url + ")\n" );
+				var ending = eol;
+				if ( i === matchArray.length ) {
+					ending = "";
+				}
+				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###"+eol+"!["+matchArray[i-1]+"](" + url + ")" + ending );
 			}
 		}
 
@@ -120,7 +133,7 @@ module.exports = function(grunt) {
 		readme = readme.replace( new RegExp("^`$[\n\r]+([^`]*)[\n\r]+^`$","gm"),function( codeblock, codeblockContents ){
 			var lines = codeblockContents.split("\n");
 			// Add newline and indent all lines in the codeblock by one tab.
-			return "\n\t" + lines.join("\n\t") + "\n"; //trailing newline is unnecessary but adds some symmetry.
+			return eol+"\t" + lines.join("\n\t") + "\n"; //trailing newline is unnecessary but adds some symmetry.
 		});
 
 		readme = options.post_convert(readme) || readme;

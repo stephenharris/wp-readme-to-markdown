@@ -99,6 +99,14 @@ module.exports = function(grunt) {
           }
 		}
       },
+      with_blocks_and_screenshots_and_crlf_endings: {
+        files: {
+          'tmp/readme-with-blocks-and-screenshors-crlf.md': 'test/fixtures/readme-with-blocks-and-screenshors-crlf.txt',
+        },
+        options: {
+          screenshot_url: 'http://ps.w.org/{plugin}/assets/{screenshot}.png'
+        }
+      },
     },
 
     // Unit tests.

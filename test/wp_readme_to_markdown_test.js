@@ -106,4 +106,14 @@ exports.wp_readme_to_markdown = {
 
     test.done();
   },
+  
+  with_blocks_and_screenshots_and_crlf_endings: function( test ){
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/readme-with-blocks-and-screenshors-crlf.md');
+    var expected = grunt.file.read('test/expected/readme-with-blocks-and-screenshors-crlf.md');
+    test.equal(actual, expected );
+
+    test.done();
+  },
 };

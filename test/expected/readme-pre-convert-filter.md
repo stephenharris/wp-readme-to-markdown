@@ -68,7 +68,6 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 ### 2. This is the second screen shot ###
 ![This is the second screen shot](http://ps.w.org/plugin-name/assets/screenshot-2.png)
 
-
 ## Changelog ##
 
 ### 1.0 ###
