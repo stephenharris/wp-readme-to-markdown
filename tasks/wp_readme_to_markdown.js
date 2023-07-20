@@ -112,11 +112,11 @@ module.exports = function(grunt) {
 				var url = options.screenshot_url;
 				url = url.replace( '{plugin}', plugin );
 				url = url.replace( '{screenshot}', 'screenshot-'+i );
-				var ending = "\r\n";
+				var ending = "\n";
 				if ( i === matchArray.length ) {
 					ending = "";
 				}
-				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###\r\n!["+matchArray[i-1]+"](" + url + ")" + ending );
+				readme = readme.replace(  globalMatch[i-1], "### "+i+". "+ matchArray[i-1] +" ###\n!["+matchArray[i-1]+"](" + url + ")" + ending );
 			}
 		}
 
